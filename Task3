@@ -1,6 +1,6 @@
-SELECT suppliers.company_name AS company, COUNT(products)
+SELECT suppliers.company_name AS company
 FROM products
 JOIN suppliers ON products.supplier_id = suppliers.supplier_id
 GROUP BY suppliers.company_name
 HAVING COUNT(products) = 5
-ORDER BY count desc, suppliers.company_name;
+ORDER BY suppliers.company_name;
