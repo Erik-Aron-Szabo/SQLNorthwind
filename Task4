@@ -1,0 +1,6 @@
+SELECT customers.company_name AS companyname,
+ARRAY_AGG (orders.order_id) orders
+FROM orders
+JOIN customers ON customers.customer_id = orders.customer_id
+GROUP BY customers.company_name
+ORDER BY customers.company_name;
