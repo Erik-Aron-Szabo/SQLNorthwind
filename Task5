@@ -3,3 +3,13 @@ FROM products
 RIGHT JOIN suppliers ON suppliers.supplier_id = products.product_id
 GROUP BY suppliers.company_name, products.product_name, products.unit_price
 ORDER BY products.unit_price desc, products.product_name, suppliers.company_name;
+
+
+---
+
+SELECT suppliers.company_name as company, products.product_name as product, MAX(products.unit_price) as price
+FROM products
+RIGHT JOIN suppliers ON suppliers.supplier_id = products.product_id
+GROUP BY suppliers.company_name, products.product_name, products.unit_price
+HAVING MAX(products.unit_price) >= products.unit_price
+ORDER BY products.unit_price desc;
